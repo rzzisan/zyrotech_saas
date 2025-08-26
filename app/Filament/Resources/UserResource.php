@@ -80,6 +80,13 @@ class UserResource extends Resource
                     ->label('Plan')
                     ->options(Plan::all()->pluck('name', 'id'))
                     ->query(function (Builder $query, array $data): Builder {
+<<<<<<< ours
+=======
+                        if (blank($data['value'] ?? null)) {
+                            return $query;
+                        }
+
+>>>>>>> theirs
                         return $query->whereHas('subscription', function (Builder $q) use ($data) {
                             return $q->where('plan_id', $data['value']);
                         });
