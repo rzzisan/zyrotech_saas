@@ -76,21 +76,7 @@ class UserResource extends Resource
                 Tables\Columns\TextColumn::make('created_at')->dateTime()->sortable()->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                Tables\Filters\SelectFilter::make('plan')
-                    ->label('Plan')
-                    ->options(Plan::all()->pluck('name', 'id'))
-                    ->query(function (Builder $query, array $data): Builder {
-<<<<<<< ours
-=======
-                        if (blank($data['value'] ?? null)) {
-                            return $query;
-                        }
-
->>>>>>> theirs
-                        return $query->whereHas('subscription', function (Builder $q) use ($data) {
-                            return $q->where('plan_id', $data['value']);
-                        });
-                    }),
+                //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
